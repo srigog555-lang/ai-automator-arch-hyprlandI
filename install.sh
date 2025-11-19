@@ -85,6 +85,12 @@ else
   pip install fastapi uvicorn websockets aiohttp aiosqlite cryptography pyyaml
 fi
 
+# Make the ai_automator package importable inside the venv by installing editable
+cd "$REPO_DIR"
+pip install --upgrade pip
+pip install -e .
+cd - >/dev/null
+
 # Create systemd user service
 cat > "$SERVICE_FILE" <<'EOF'
 [Unit]

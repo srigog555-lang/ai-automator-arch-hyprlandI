@@ -76,6 +76,38 @@ python -m ai_automator.safe_cli disable
 python -m ai_automator.cli configure
 ```
 
+### Troubleshooting: ModuleNotFoundError when running `python -m ai_automator.cli`
+If you see:
+
+```
+/usr/bin/python: Error while finding module specification for 'ai_automator.cli' (ModuleNotFoundError: No module named 'ai_automator')
+```
+
+It means the package is not on your Python path. You can fix it in one of three ways:
+
+1) Activate the venv and install the project in editable mode (recommended):
+
+```bash
+source ~/.local/share/ai-automator/venv/bin/activate
+cd ~/ai-automator-arch-hyprlandI   # the repo clone dir
+pip install -e .
+python -m ai_automator.cli audit
+```
+
+2) Use the wrapper that the installer created (this already uses the venv):
+
+```bash
+~/.local/bin/ai-automator audit
+```
+
+3) Add the project directory to PYTHONPATH temporarily:
+
+```bash
+PYTHONPATH=~/ai-automator-arch-hyprlandI python -m ai_automator.cli audit
+```
+
+After re-installing editable (`pip install -e .`), the `python -m ai_automator.*` commands will work from anywhere inside the activated venv.
+
 ## How it works (overview)
 The system is designed to be safe, auditable, and privacy-first while providing strong automation:
 
