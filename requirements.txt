@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+websockets
+aiohttp
+cryptography
+aiosqlite
+pyyaml
+watchdog
+pydantic
+requests

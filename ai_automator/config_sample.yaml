@@ -1,0 +1,5 @@
+# Example config for ai-automator
+# enable_dispatch: allow the daemon to run physical actions (keyboard, mouse, shell), default false
+enable_dispatch: false
+
+disable_network: false

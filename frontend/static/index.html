@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Automator Dashboard</title>
+  <style>
+    body { font-family: system-ui, Arial; margin: 1rem; }
+    #log { height: 400px; border: 1px solid #ccc; overflow: auto; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h1>AI Automator Dashboard</h1>
+  <div id="log">Connecting...</div>
+  <input id="msg"> <button id="send">Send</button>
+
+<script>
+  const log = document.getElementById('log');
+  const ws = new WebSocket('ws://127.0.0.1:8080/ws');
+  ws.addEventListener('open', () => log.innerHTML += '<div><i>Connected</i></div>');
+  ws.addEventListener('message', (evt) => log.innerHTML += '<div>' + evt.data + '</div>');
+  document.getElementById('send').addEventListener('click', () => { let v = document.getElementById('msg').value; ws.send(v); });
+</script>
+</body>
+</html>
